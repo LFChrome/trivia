@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 
 import { QuestionText } from './QuestionText';
-import { AnswerButton } from './AnswerButton';
+import { AnswerDisplay } from './AnswersDisplay';
+
+const question = {
+  choices: [48, 13, 52, 50],
+  correct_choice_index: 3,
+  question_text: "How many states are in the US?"
+}
 
 export class Question extends Component {
-  render() {
+  render() {  
     return (
       <div className="col-md-12">
-        <QuestionText prompt="What is the meaning of life?"/>
+        <QuestionText prompt={question.question_text}/>
         <hr></hr>
-        <AnswerButton answer="42"/>
-        <AnswerButton answer="Be happy!"/>
-        <AnswerButton answer="Become rich!"/>
-        <AnswerButton answer="There is no meaning"/>
+        <ol>
+          <AnswerDisplay answersArray={question.choices}/>
+        </ol>
       </div>
     );
   }
