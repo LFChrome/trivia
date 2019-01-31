@@ -4,13 +4,13 @@ import '../css/AnswersDisplay.css';
 
 export class AnswerDisplay extends Component {
   render() {
-    var a_array = this.props.answersArray.map(item => {
-      return <li><AnswerItem text={item}/></li>
-    });
+    const answers_array = this.props.answersArray.map((item, index) => 
+      <AnswerItem text={item} key={index} id={index}/>
+    );
     return (
       <div className="answer_display">
-        <ul>
-          {a_array}
+        <ul className="list-group">
+          {answers_array} 
         </ul>
       </div>
     );
@@ -20,7 +20,9 @@ export class AnswerDisplay extends Component {
 class AnswerItem extends Component {
   render() {
     return (
-      <button className="answer_button">{this.props.text}</button>
+      <button className="answer_item list-group-item list-group-item-action" id={this.props.id}>
+        {this.props.text}
+      </button>
     );
   }
 }
