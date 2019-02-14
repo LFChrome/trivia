@@ -2,22 +2,14 @@ import React, { Component } from 'react';
 
 import '../css/AnswersDisplay.css';
 
-function handleWrongChoice() {
-  console.log(false)
-}
-function handleRightChoice() {
-  console.log(true)
-}
-
 export class AnswerDisplay extends Component {
+
+  functions = this.props.functions;
+
   render() {
-    const answers_array = this.props.answersArray.map((item, index) => {
-      let clickFunction = handleWrongChoice;
-      if (index === this.props.correctChoice) {
-        clickFunction = handleRightChoice;
-      }
+    const answers_array = this.props.choiceArray.map((item, index) => {
       return ( 
-        <AnswerItem text={item} key={index} id={index} clickFunction={clickFunction}/>
+        <AnswerItem text={item} key={index} clickFunction={this.functions.nextQuestion}/>
       )
     });
     return (

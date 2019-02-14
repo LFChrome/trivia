@@ -4,16 +4,18 @@ import { QuestionText } from './QuestionText';
 import { AnswerDisplay } from './AnswersDisplay';
 
 export class Question extends Component {
+
+  question_text = this.props.questionObject.question_text;
+  choices = this.props.questionObject.choices;
+
   render() {  
+    console.log(this.props.functions);
     return (
       <div className="col-md-12">
-        <QuestionText prompt={this.props.questionObject.question_text}/>
+        <QuestionText prompt={this.question_text}/>
         <hr></hr>
         <ol>
-          <AnswerDisplay 
-            answersArray={this.props.questionObject.choices}
-            correctChoice={this.props.questionObject.correct_choice_index}
-          />
+          <AnswerDisplay choiceArray={this.choices} functions={this.props.functions}/>
         </ol>
       </div>
     );

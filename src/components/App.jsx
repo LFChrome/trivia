@@ -5,8 +5,6 @@ import { Question } from './Question';
 
 import '../css/App.css';
 
-
-
 export class App extends Component {
 
   questionArray = [
@@ -34,15 +32,15 @@ export class App extends Component {
     }
   }
 
-  nextQuestion() {
-    this.setState({
-      currentQuestionIndex: this.currentQuestionIndex + 1,
-    });
+  functions = {
+    nextQuestion: function() {
+      console.log("debug");
+      var newCurrentQuestionIndex = this.state.currentQuestionIndex + 1;
+      this.setState({
+        currentQuestionIndex: newCurrentQuestionIndex
+      });
+    },
   }
-
-  functionArray = [
-    this.nextQuestion(),
-  ]
 
   render() {
     return (
@@ -51,7 +49,7 @@ export class App extends Component {
         <hr/>
         <Question 
           questionObject={this.questionArray[this.state.currentQuestionIndex]}
-
+          functions={this.functions}
         />
         <hr/>
 
