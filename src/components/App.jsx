@@ -25,34 +25,40 @@ export class App extends Component {
     },
   ]
 
-  constructor(props) {
-    super(props) 
-    this.state = {
-      currentQuestionIndex: 0
+  app_functions = {
+    nextQuestion: () => {
+      let newIndex = this.state.currentIndex + 1;
+      if (newIndex >= this.questionArray.length) {
+        newIndex = 0;
+      }
+      this.setState({
+        currentIndex: newIndex
+      });
+      console.log(this.state.currentIndex);
+    },
+    showCorrectAnswer: () => {
+      
     }
   }
 
-  functions = {
-    nextQuestion: function() {
-      console.log("debug");
-      var newCurrentQuestionIndex = this.state.currentQuestionIndex + 1;
-      this.setState({
-        currentQuestionIndex: newCurrentQuestionIndex
-      });
-    },
+  constructor(props) {
+    super(props) 
+    this.state = {
+      currentIndex: 0,
+      score: 0,
+    }
   }
 
   render() {
+    console.log(this.questionArray[this.state.currentIndex]);
     return (
       <div className="container app">
         <Title title="Trivia"/>
         <hr/>
         <Question 
-          questionObject={this.questionArray[this.state.currentQuestionIndex]}
-          functions={this.functions}
+          questionObject={this.questionArray[this.state.currentIndex]}
         />
         <hr/>
-
       </div>
     );
   }

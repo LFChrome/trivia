@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 
 import { QuestionText } from './QuestionText';
-import { AnswerDisplay } from './AnswersDisplay';
+import { AnswerDisplay } from './AnswerButton';
 
 export class Question extends Component {
-
-  question_text = this.props.questionObject.question_text;
-  choices = this.props.questionObject.choices;
-
-  render() {  
-    console.log(this.props.functions);
+  render() { 
+    const { questionObject } = this.props;
     return (
       <div className="col-md-12">
-        <QuestionText prompt={this.question_text}/>
-        <hr></hr>
-        <ol>
-          <AnswerDisplay choiceArray={this.choices} functions={this.props.functions}/>
-        </ol>
+        <QuestionText prompt={questionObject.question_text}/>
+        <hr />
+        <ul className="list-group">
+          <AnswerDisplay 
+            questionObject={questionObject}
+          />
+        </ul>
       </div>
     );
   }
