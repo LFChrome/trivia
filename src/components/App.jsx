@@ -34,7 +34,6 @@ export class App extends Component {
       this.setState({
         currentIndex: newIndex
       });
-      console.log(this.state.currentIndex);
     },
     showCorrectAnswer: () => {
       

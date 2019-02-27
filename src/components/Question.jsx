@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { QuestionText } from './QuestionText';
-import { AnswerDisplay } from './AnswerButton';
+import { AnswerDisplay } from './AnswerDisplay';
 
 export class Question extends Component {
   render() { 
