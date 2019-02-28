@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { getQuestions } from '../clients/firebase';
+
 import { Title } from './Title';
 import { Question } from './Question';
 
@@ -7,55 +9,50 @@ import '../css/App.css';
 
 export class App extends Component {
 
-  questionArray = [
-    {
-      choices: [1, 2, 3, 4],
-      correct_choice_index: 3,
-      question_text: "What is 2 x 2?"
-    },
-    {
-      choices: [1, 2, 3, 4],
-      correct_choice_index: 1,
-      question_text: "What is 2 x 1?"
-    },
-    {
-      choices: [1, 2, 3, 4],
-      correct_choice_index: 2,
-      question_text: "What is 2 x 1.5?"
-    },
-  ]
-
-  app_functions = {
-    nextQuestion: () => {
-      let newIndex = this.state.currentIndex + 1;
-      if (newIndex >= this.questionArray.length) {
-        newIndex = 0;
-      }
-      this.setState({
-        currentIndex: newIndex
-      });
-    },
-    showCorrectAnswer: () => {
-      
+  nextQuestion()  {
+    let newIndex = this.state.currentIndex + 1;
+    if (newIndex >= this.state.questions.length) {
+      newIndex = 0;
     }
+    this.setState({
+      currentIndex: newIndex
+    });
   }
 
+  changeScore(score) {
+    const newScore = this.state.score + score
+    this.setState({
+      score: newScore,
+    })
+    console.log(this.state.score);
+  }
+
+
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       currentIndex: 0,
       score: 0,
+      questions: [{
+        choices: [1, 2, 3, 4],
+        correct_choice_index: 3,
+        question_text: "What is 2 x 2?"
+      }]
     }
+    getQuestions((questions) => {
+      this.setState({questions: questions});
+    });
   }
 
   render() {
-    console.log(this.questionArray[this.state.currentIndex]);
     return (
       <div className="container app">
         <Title title="Trivia"/>
         <hr/>
         <Question 
-          questionObject={this.questionArray[this.state.currentIndex]}
+          questionObject={this.state.questions[this.state.currentIndex]}
+          nextQuestion={() => this.nextQuestion()}
+          changeScore={() => this.changeScore()}
         />
         <hr/>
       </div>
