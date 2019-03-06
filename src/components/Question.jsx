@@ -9,7 +9,7 @@ export class Question extends Component {
     return (
       <div className="col-md-12">
         <QuestionText prompt={questionObject.question_text}/>
-        <hr />
+        <hr/>
         <ul className="list-group">
           <AnswerDisplay 
             questionObject={questionObject}

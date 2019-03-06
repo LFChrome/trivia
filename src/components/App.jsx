@@ -27,7 +27,6 @@ export class App extends Component {
     console.log(this.state.score);
   }
 
-
   constructor(props) {
     super(props)
     this.state = {
@@ -43,20 +42,24 @@ export class App extends Component {
       this.setState({questions: questions});
     });
   }
-
-  render() {
+  
+  renderQuestion() {
     return (
       <div className="container app">
-        <Title title="Trivia"/>
+        <Title title={"Trivia"}/>
         <hr/>
         <Question 
           questionObject={this.state.questions[this.state.currentIndex]}
           nextQuestion={() => this.nextQuestion()}
-          changeScore={() => this.changeScore()}
+          changeScore={(score) => this.changeScore(score)}
         />
         <hr/>
       </div>
     );
+  }
+
+  render() {
+    return this.renderQuestion()
   }
 }
 
