@@ -51,8 +51,8 @@ export class App extends Component {
     });
   }
   
-  render() {
-    const { questions, currentIndex, score, disabledButtons } = this.state;
+  renderQuestion() {
+    const { questions, currentIndex, disabledButtons } = this.state;
     return (
       <div className="container app">
         <Title title={"Trivia"}/>
@@ -64,10 +64,43 @@ export class App extends Component {
         />
         <hr/>
         <HUD 
-          score={score}
           nextQuestion={() => this.nextQuestion()}
           disabledButtons={disabledButtons}
         />
+      </div>
+    );
+  }
+
+  renderResults() {
+    const { questions, score } = this.state;
+    return (
+      <div className="container app">
+        <Title title={"Trivia"}/>
+        <hr/>
+        <p>
+          You correctly answered {score} questions out of { questions.length }
+        </p>
+        <button onClick={(() => {
+          this.setState({
+            currentIndex: 0,
+            quizEnd: false,
+            score: 0,
+            disabledButtons: false,
+          });
+        })}>
+          Try again
+        </button>
+        <hr/>
+      </div>
+    );
+  }
+
+  render() {
+    const { quizEnd } = this.state
+    return (
+      <div>
+        { !quizEnd && this.renderQuestion() }
+        { quizEnd && this.renderResults() }
       </div>
     );
   }
