@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-gh-pages/static/css/main.89967bfd.chunk.css",
-  "main.js": "/react-gh-pages/static/js/main.de4a1caa.chunk.js",
-  "main.js.map": "/react-gh-pages/static/js/main.de4a1caa.chunk.js.map",
-  "static/js/1.b79c7027.chunk.js": "/react-gh-pages/static/js/1.b79c7027.chunk.js",
-  "static/js/1.b79c7027.chunk.js.map": "/react-gh-pages/static/js/1.b79c7027.chunk.js.map",
-  "runtime~main.js": "/react-gh-pages/static/js/runtime~main.346eb3ee.js",
-  "runtime~main.js.map": "/react-gh-pages/static/js/runtime~main.346eb3ee.js.map",
-  "static/css/main.89967bfd.chunk.css.map": "/react-gh-pages/static/css/main.89967bfd.chunk.css.map",
-  "index.html": "/react-gh-pages/index.html",
-  "precache-manifest.a638f98d4ce0f723e386f9b5c9319f8f.js": "/react-gh-pages/precache-manifest.a638f98d4ce0f723e386f9b5c9319f8f.js",
-  "service-worker.js": "/react-gh-pages/service-worker.js"
+  "main.css": "/trivia/static/css/main.89967bfd.chunk.css",
+  "main.js": "/trivia/static/js/main.de4a1caa.chunk.js",
+  "main.js.map": "/trivia/static/js/main.de4a1caa.chunk.js.map",
+  "static/js/1.f26edfd1.chunk.js": "/trivia/static/js/1.f26edfd1.chunk.js",
+  "static/js/1.f26edfd1.chunk.js.map": "/trivia/static/js/1.f26edfd1.chunk.js.map",
+  "runtime~main.js": "/trivia/static/js/runtime~main.30964e33.js",
+  "runtime~main.js.map": "/trivia/static/js/runtime~main.30964e33.js.map",
+  "static/css/main.89967bfd.chunk.css.map": "/trivia/static/css/main.89967bfd.chunk.css.map",
+  "index.html": "/trivia/index.html",
+  "precache-manifest.e7d284774d6acd0bad905b165d17fe1b.js": "/trivia/precache-manifest.e7d284774d6acd0bad905b165d17fe1b.js",
+  "service-worker.js": "/trivia/service-worker.js"
 }
