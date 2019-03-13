@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 
 export class AnswerDisplay extends Component {
-   alertIncorrectAnswer(id) {
-      const { questionObject } = this.props;
-      const correct_choice_index = questionObject.correct_choice_index;
-      const answered = questionObject.choices[id];
-      const correctAnswer = questionObject.choices[correct_choice_index]
-      alert(`You answered ${answered}. The correct option was ${correctAnswer}.`);
-   }
-
+   
    render() {
-      const color = "#495057";
-      const { questionObject, changeScore, disabledButtons } = this.props;
+      const { questionObject, changeScore, disabledButtons, correctColor, wrongColor, showCorrectOption } = this.props;
       const { correct_choice_index } = this.props.questionObject
       var arr = questionObject.choices.map((item, index) => {
          if (index == correct_choice_index) {
             return (
                <AnswerButton
-                  color={color}
+                  color={correctColor}
                   clickFunction={() => {
                      changeScore(1);
-                     alert("You are correct.")
+                     showCorrectOption();
                   }}
                   text={item}
                   id={index}
@@ -31,11 +23,10 @@ export class AnswerDisplay extends Component {
          } else {
             return (
                <AnswerButton
-                  color={color}
+                  color={wrongColor}
                   clickFunction={(e) => {
                      changeScore(0);
-                     console.log(e.target.id)
-                     this.alertIncorrectAnswer(e.target.id)
+                     showCorrectOption();
                   }}
                   text={item}
                   id={index}

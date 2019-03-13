@@ -14,13 +14,19 @@ export class App extends Component {
     let newIndex = this.state.currentIndex + 1;
     if (newIndex >= this.state.questions.length) {
       this.setState({
-        quizEnd: true
+        quizEnd: true,
+        correct: "#495057",
+        wrong: "#495057"
       });
     }
-    this.setState({
-      currentIndex: newIndex,
-      disabledButtons: false,
-    });
+    else {
+      this.setState({
+        currentIndex: newIndex,
+        disabledButtons: false,
+        correctColor: "#495057",
+        wrongColor: "#495057"
+      });
+    }
   }
 
   changeScore(score) {
@@ -28,9 +34,13 @@ export class App extends Component {
     this.setState({
       score: newScore,
       disabledButtons: true
-    })
-    console.log(this.state.score);
-    console.log(this.state.questions.length)
+    });
+  }
+
+  showCorrectOption() {
+    this.setState({
+      correctColor: "green",
+    });
   }
 
   constructor(props) {
@@ -44,7 +54,9 @@ export class App extends Component {
         choices: [1, 2, 3, 4],
         correct_choice_index: 3,
         question_text: "What is 2 x 2?"
-      }]
+      }],
+      correct: "#495057",
+      wrong: "#495057"
     }
     getQuestions((questions) => {
       this.setState({questions: questions});
@@ -52,14 +64,17 @@ export class App extends Component {
   }
   
   renderQuestion() {
-    const { questions, currentIndex, disabledButtons } = this.state;
+    const { questions, currentIndex, disabledButtons, correctColor, wrongColor } = this.state;
     return (
       <div className="container app">
         <Title title={"Trivia"}/>
         <hr/>
         <Question 
+          correctColor={correctColor}
+          wrongColor={wrongColor}
           questionObject={questions[currentIndex]}
           changeScore={(score) => this.changeScore(score)}
+          showCorrectOption={() => this.showCorrectOption()}
           disabledButtons={disabledButtons}
         />
         <hr/>
